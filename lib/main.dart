@@ -8,7 +8,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Nokhyun Flutter Demo',
       theme: ThemeData(primarySwatch: Colors.blue),
-      home: MyHomePage(title: 'Nokhyun Flutter Demo Home Page'),
+      home: MyHomePage(title: 'Nokhyun Flutter Tutorial Page'),
     );
   }
 }
@@ -22,34 +22,98 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0; // 변수 앞에 _붙으면 private
+  var titleSection = Row(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: <Widget>[
+      Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Text(
+            'Oeschinen Lake Comapground',
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+          ),
+          Text('Kandresteg, Switzerland',
+              style: TextStyle(color: Colors.grey, fontSize: 16)),
+        ],
+      ),
+      Padding(padding: EdgeInsets.all(8.0)),
+      Icon(
+        Icons.star,
+        size: 35,
+        color: Colors.deepOrange,
+      ),
+      Text(
+        '41',
+        style: TextStyle(fontSize: 22),
+      ),
+    ],
+  );
+
+  var buttonSection = Row(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: <Widget>[
+      Column(
+        children: [
+          Icon(
+            Icons.call,
+            size: 40,
+            color: Colors.lightBlue,
+          ),
+          Text(
+            'Call',
+            style: TextStyle(color: Colors.lightBlue),
+          )
+        ],
+      ),
+      Padding(padding: EdgeInsets.all(40.0)),
+      Column(
+        children: [
+          Icon(Icons.near_me, size: 40, color: Colors.lightBlue),
+          Text(
+            'ROUTE',
+            style: TextStyle(color: Colors.lightBlue),
+          )
+        ],
+      ),
+      Padding(padding: EdgeInsets.all(40.0)),
+      Column(
+        children: [
+          Icon(Icons.share, size: 40, color: Colors.lightBlue),
+          Text('SHARE', style: TextStyle(color: Colors.lightBlue))
+        ],
+      )
+    ],
+  );
+  
+
+
+  var textSection = Container(
+      child: Text('Lake......', style: TextStyle(fontSize: 15)),
+      padding:EdgeInsets.all(40.0)
+  );
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text('You have pushed the button this many times:'),
-            Text('$_counter', style: Theme.of(context).textTheme.headline2,)
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'increment',
-        child: Icon(Icons.add),
+      body: Column(
+        children: <Widget>[
+          Image.network(
+            '',
+            height: 240,
+            width: 600,
+            fit: BoxFit.cover,
+          ),
+          Padding(padding: EdgeInsets.all(12.0)),
+          titleSection,
+          Padding(padding: EdgeInsets.all(12.0)),
+          buttonSection,
+          textSection
+        ],
       ),
     );
   }
 
-  void _incrementCounter() {
-    setState(() {
-      _counter+= 2;
-    });
+  Text _getText(String str){
+    return Text(str, style: TextStyle(color: Colors.lightBlue));
   }
 }
